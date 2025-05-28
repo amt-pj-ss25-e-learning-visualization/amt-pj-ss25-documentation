@@ -1,0 +1,31 @@
+type: object
+required:
+  - id
+  - actor_id
+  - module_id
+  - verb
+  - timestamp
+properties:
+  id:
+    type: string
+    format: uuid
+    description: Unique identifier for the statement.
+  actor_id:
+    type: string
+    format: uuid
+    description: The ID of the actor who performed the action.
+  module_id:
+    type: string
+    format: uuid
+    description: The ID of the module related to this statement.
+  verb:
+    type: string
+    description: The action performed by the actor.
+  result:
+    type: object
+    nullable: true
+    description: Optional result object with additional details about the statement.
+  timestamp:
+    type: string
+    format: date-time
+    description: The date and time when the statement was recorded.

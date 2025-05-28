@@ -1,0 +1,25 @@
+get:
+  tags:
+    - Actors
+  summary: Get actor by id
+  parameters:
+    - name: id
+      in: path
+      description: "The id of the actor."
+      example: 03a4ccad-b8bf-4fea-a0eb-6c5f56eb963e
+      required: true
+      schema:
+        type: uuid
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Actor'
+    '404':
+      description: Actor not found
+      $ref: ../components/responses/NotFound.yaml
+    '500':
+      description: Unexpected server error
+      $ref: ../components/responses/ServerError.yaml

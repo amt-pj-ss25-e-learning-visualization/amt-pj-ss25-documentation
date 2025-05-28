@@ -1,0 +1,11 @@
+description: NotFound
+content:
+  application/json:
+    schema:
+      type: object
+      properties:
+        error:
+          type: string
+          description: >
+            A human-readable error message describing the resource that could not be found, including the specific ID that was requested.
+          example: "404: Entry with id '123e4567-e89b-12d3-a456-426614174000' not found."

@@ -1,0 +1,59 @@
+type: object
+required:
+  - id
+  - title
+  - submodules
+  - resources
+properties:
+  id:
+    type: string
+    format: uuid
+    description: Unique identifier for the module.
+    example: "c06d6b64-9b4f-4d9d-8188-2e5deff1b94b"
+  parent_id:
+    type: string
+    format: uuid
+    nullable: true
+    description: The ID of the parent module, or null if top-level module.
+    example: null
+  title:
+    type: string
+    description: Title of the module.
+    example: "Grundlagen des Kletterns"
+  instructor:
+    $ref: '#/components/schemas/Actor'
+    nullable: true
+    description: The instructor for this module, or null if not top-level module.
+    example:
+      id: "b7e23ec2-05c8-4e8b-8b8c-9b8c8b8c8b8c"
+      mail: "instructor1@example.com"
+      name: "instructor1"
+      role: "instructor"
+  resources:
+    type: array
+    items:
+      $ref: '#/components/schemas/LearningResource'
+    description: Learning resources for this module.
+    example: []
+  submodules:
+    type: array
+    description: Submodules of this module.
+    items:
+      $ref: '#/components/schemas/ModuleHierarchy'
+    example:
+      - id: "b3fedad9-adfc-4df7-8017-abe841b97cf6"
+        parent_id : "c06d6b64-9b4f-4d9d-8188-2e5deff1b94b"
+        title: "Auf Bäume klettern"
+        instructor: null
+        resources:
+          id: "a7e2f833-d2a1-4ec4-862a-4bd1ff999532"
+          title: "Learning Object 03"
+          description: "This is a very interesting learning object"
+          language: "de-DE"
+          interactivity_type: "expositive"
+          interactivity_level: "low"
+          learning_resource_type: "narrative text"
+          semantic_density: "low"
+          difficulty: "low"
+          typical_learning_time: "PT5M30S"
+        submodules: []

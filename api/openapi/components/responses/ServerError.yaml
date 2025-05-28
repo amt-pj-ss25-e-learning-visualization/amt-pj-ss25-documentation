@@ -1,0 +1,11 @@
+description: ServerError
+content:
+  application/json:
+    schema:
+      type: object
+      properties:
+        error:
+          type: string
+          description: >
+            Error indicating that the server encountered an unexpected issue.
+          example: "500: Unexpected error occured!"

@@ -1,0 +1,68 @@
+openapi: 3.1.0
+info:
+  title: Dashboard-DB API
+  license:
+    name: 'TODO: License name'
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  x-logo:
+    url: 'https://redocly.github.io/openapi-template/logo.png'
+    altText: OpenAPI example logo
+  description: >
+    TODO: Dashboard-DB API description. Future reminder, that this supports **Markdown** formatting.
+tags:
+  - name: Actors
+    description: "TODO: Actors-API description"
+x-tagGroups:
+  - name: General
+    tags:
+      - Actors
+      - Courses
+      - Modules
+      - Statements
+servers:
+  - url: http://<host-adress>:<port>/
+paths:
+  '/actors':
+    $ref: 'paths/actors/actors.yaml'
+  '/actors/{id}':
+    $ref: 'paths/actors/actors_{id}.yaml'
+  '/actors/role/{role}':
+    $ref: 'paths/actors/actors_role_{role}.yaml'
+  '/courses':
+    $ref: 'paths/courses/courses.yaml'
+  '/courses/{id}':
+    $ref: 'paths/courses/courses_{id}.yaml'
+  '/modules':
+    $ref: 'paths/modules/modules.yaml'
+  '/modules/{id}':
+    $ref: 'paths/modules/modules_{id}.yaml'
+  '/modules/course/{courseId}':
+    $ref: 'paths/modules/modules_course_{courseId}.yaml'
+  '/modules/instructor/{instructorId}':
+    $ref: 'paths/modules/modules_instructor_{instructorId}.yaml'
+  '/statements':
+    $ref: 'paths/statements/statements.yaml'
+  '/statements/{id}':
+    $ref: 'paths/statements/statements_{id}.yaml'
+  '/statements/actor/{actorId}':
+    $ref: 'paths/statements/statements_actor_{actorId}.yaml'
+  '/statements/module/{moduleId}':
+    $ref: 'paths/statements/statements_module_{moduleId}.yaml'
+  '/statements/verb/{verb}':
+    $ref: 'paths/statements/statements_verb_{verb}.yaml'
+components:
+  schemas:
+    Actor:
+      $ref: 'components/schemas/Actor.yaml'
+    Course:
+      $ref: 'components/schemas/Course.yaml'
+    Module:
+      $ref: 'components/schemas/Module.yaml'
+    Statement:
+      $ref: 'components/schemas/Statement.yaml'
+    StatementResolved:
+      $ref: 'components/schemas/StatementResolved.yaml'
+    ModuleHierarchy:
+      $ref: 'components/schemas/ModuleHierarchy.yaml'
+    LearningResource:
+      $ref: 'components/schemas/LearningResource.yaml'

@@ -1,0 +1,34 @@
+type: object
+required: [id, title, description, language, interactivity_type, interactivity_level, learning_resource_type, semantic_density, difficulty, typical_learning_time]
+properties:
+  id:
+    type: string
+    format: uuid
+    example: "c5ea4307-9508-4ec9-81d2-fecf5d107b34"
+  title:
+    type: string
+    example: "Learning Object 03"
+  description:
+    type: string
+    example: "Example: Learning Object 03"
+  language:
+    type: string
+    example: "de-DE"
+  interactivity_type:
+    type: string
+    example: "expositive"
+  interactivity_level:
+    type: string
+    example: "low"
+  learning_resource_type:
+    type: string
+    example: "narrative text"
+  semantic_density:
+    type: string
+    example: "low"
+  difficulty:
+    type: string
+    example: "low"
+  typical_learning_time:
+    type: string
+    example: "PT5M30S"

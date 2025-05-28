@@ -1,0 +1,33 @@
+get:
+  tags:
+    - Actors
+  summary: Get actors by role
+  parameters:
+    - name: role
+      in: path
+      description: "The role to filter by."
+      example: student
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Actor'
+          example:
+            - id: "123e4567-e89b-12d3-a456-426614174000"
+              mail: "student1@example.com"
+              name: "Student1"
+              role: "student"
+            - id: "fb8b8aad-abc9-4518-9857-c9e6923d7c68"
+              mail: "student2@example.com"
+              name: "Student2"
+              role: "student"
+    '500':
+      description: Unexpected server error
+      $ref: ../components/responses/ServerError.yaml

@@ -1,0 +1,36 @@
+type: object
+required:
+  - id
+  - course_id
+  - title
+properties:
+  id:
+    type: string
+    format: uuid
+    description: Unique identifier for the module.
+    example: "898be885-cbcf-40fb-a8a6-79f2a4849475"
+  course_id:
+    type: string
+    format: uuid
+    description: The ID of the course this module belongs to.
+    example: "cc172b33-65de-4c41-bcfa-347aa9056f80"
+  parent_id:
+    type: string
+    format: uuid
+    nullable: true
+    description: >
+      The ID of the parent module, if this is a submodule. 
+      If null, this module is a top-level module and its parent is the course specified by `course_id`.
+    example: null
+  title:
+    type: string
+    description: Title of the module.
+    example: "Grundlagen des Kletterns"
+  instructor_id:
+    type: string
+    format: uuid
+    nullable: true
+    description: >
+      The ID of the instructor for this module. 
+      Only top-level modules contain the ID of the responsible instructor.
+    example: "a3b4c5d6-7890-3456-1cde-345678901bcd"

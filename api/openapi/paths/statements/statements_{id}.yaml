@@ -1,0 +1,25 @@
+get:
+  tags:
+    - Statements
+  summary: Get statement by id
+  parameters:
+    - name: id
+      in: path
+      description: "The id of the statement."
+      example: 5a1520d4-52f2-453a-81f3-448f4afa5522
+      required: true
+      schema:
+        type: uuid
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/StatementResolved'
+    '404':
+      description: Statement not found
+      $ref: ../components/responses/NotFound.yaml
+    '500':
+      description: Unexpected server error
+      $ref: ../components/responses/ServerError.yaml

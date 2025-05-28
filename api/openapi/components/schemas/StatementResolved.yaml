@@ -1,0 +1,38 @@
+type: object
+required:
+  - id
+  - actor
+  - module
+  - verb
+  - timestamp
+properties:
+  id:
+    type: string
+    format: uuid
+    description: Unique identifier for the statement.
+    example: "5a1520d4-52f2-453a-81f3-448f4afa5522"
+  actor:
+    type: object
+    description: The actor who performed the action.
+    $ref: '#/components/schemas/Actor'
+    example:
+      - id: "b7e23ec2-05c8-4e8b-8b8c-9b8c8b8c8b8c"
+        mail: "student1@example.com"
+        name: "Student1"
+        role: "student"
+  module:
+    $ref: '#/components/schemas/Module'
+    description: The module related to this statement.
+  verb:
+    type: string
+    description: The action performed by the actor.
+    example: "searched"
+  result:
+    type: object
+    nullable: true
+    description: Optional result object with additional details about the statement.
+  timestamp:
+    type: string
+    format: date-time
+    description: The date and time when the statement was recorded.
+    example: "2025-02-22T12:34:33.756Z"

@@ -1,0 +1,25 @@
+get:
+  tags:
+    - Courses
+  summary: Get course by id
+  parameters:
+    - name: id
+      in: path
+      description: "The id of the course."
+      example: cc172b33-65de-4c41-bcfa-347aa9056f80
+      required: true
+      schema:
+        type: uuid
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Course'
+    '404':
+      description: Course not found
+      $ref: ../components/responses/NotFound.yaml
+    '500':
+      description: Unexpected server error
+      $ref: ../components/responses/ServerError.yaml

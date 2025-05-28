@@ -1,0 +1,25 @@
+type: object
+required:
+  - id
+  - mail
+  - name
+  - role
+properties:
+  id:
+    description: "Unique identifier for the actor."
+    type: string
+    format: uuid
+    example: "03a4ccad-b8bf-4fea-a0eb-6c5f56eb963e"
+  mail:
+    description: "Email address of the actor."
+    type: string
+    format: email
+    example: "actor@example.com"
+  name:
+    description: "Name of the actor."
+    type: string
+    example: "actor-name"
+  role:
+    description: "Role of the actor."
+    type: string
+    example: "actor-role"
