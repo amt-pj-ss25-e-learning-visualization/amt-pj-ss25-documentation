@@ -19,6 +19,10 @@ properties:
     type: string
     description: Description of the course.
     example: "This course covers the basics of tree surgery."
+  subject:
+    type: string
+    description: Subject of the course.
+    example: "Horticulture"
   language:
     type: string
     description: Language of the course.

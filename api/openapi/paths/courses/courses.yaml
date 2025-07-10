@@ -15,11 +15,13 @@ get:
             - id: "cc172b33-65de-4c41-bcfa-347aa9056f80"
               title: "Baumchirurg"
               description: "This course covers the basics of tree surgery."
+              subject: "Horticulture"
               language: "en"
             - id: "e6cb9809-9511-41e4-9cb7-ff1daf41d8d0"
-              title: "Fortgeschrittene Baumpflege"
-              description: "Dieser Kurs behandelt fortgeschrittene Techniken und Sicherheit in der Baumpflege."
-              language: "de"
+              title: "Webmaster"
+              description: "Webmasters deploy, maintain, monitor and support a web server to meet service requirements."
+              subject: "IT"
+              language: "en"
     '500':
       description: Unexpected server error
       $ref: ../components/responses/ServerError.yaml
