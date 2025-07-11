@@ -1,0 +1,22 @@
+type: object
+properties:
+  attempts:
+    $ref: './ModuleMetric.yaml'
+  performance:
+    $ref: './ModuleMetric.yaml'
+  masteryRaw:
+    $ref: './ModuleMetric.yaml'
+  masteryEbbinghaus:
+    $ref: './ModuleMetric.yaml'
+  completion:
+    $ref: './ModuleMetric.yaml'
+  timeSpent:
+    $ref: './ModuleMetric.yaml'
+  realVsExpectedTime:
+    $ref: './ModuleMetric.yaml'
+  lastVisit:
+    $ref: './ModuleMetric.yaml'
+  totalVisits:
+    $ref: './ModuleMetric.yaml'
+  rating:
+    $ref: './ModuleMetric.yaml'

@@ -1,0 +1,11 @@
+description: BadRequest
+content:
+  application/json:
+    schema:
+      type: object
+      properties:
+        error:
+          type: string
+          description: >
+            A human-readable error message describing what request data is invalid or missing.
+          example: "400: Module id missing in path."

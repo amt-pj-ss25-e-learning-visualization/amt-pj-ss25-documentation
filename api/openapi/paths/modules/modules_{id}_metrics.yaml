@@ -1,0 +1,25 @@
+get:
+  tags:
+    - Modules
+  summary: Get all module metrics
+  parameters:
+    - name: id
+      in: path
+      description: "The id of the module."
+      example: 898be885-cbcf-40fb-a8a6-79f2a4849475
+      required: true
+      schema:
+        type: uuid
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ModuleMetrics'
+    '400':
+      description: Module id not provided
+      $ref: ../components/responses/BadRequest.yaml
+    '500':
+      description: Unexpected server error
+      $ref: ../components/responses/ServerError.yaml

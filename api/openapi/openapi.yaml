@@ -19,6 +19,7 @@ x-tagGroups:
       - Courses
       - Modules
       - Statements
+      - Recommendations
 servers:
   - url: http://<host-adress>:<port>/
 paths:
@@ -32,6 +33,10 @@ paths:
     $ref: 'paths/courses/courses.yaml'
   '/courses/{id}':
     $ref: 'paths/courses/courses_{id}.yaml'
+  '/modules/{id}/metrics/aggregated':
+    $ref: 'paths/courses/courses_{id}_metrics_aggregated.yaml'
+  '/modules/{moduleId}/actors/{actorId}/metrics/aggregated':
+    $ref: 'paths/courses/courses_{courseId}_actors_{actorId}_metrics_aggregated.yaml'
   '/modules':
     $ref: 'paths/modules/modules.yaml'
   '/modules/{id}':
@@ -40,6 +45,10 @@ paths:
     $ref: 'paths/modules/modules_course_{courseId}.yaml'
   '/modules/instructor/{instructorId}':
     $ref: 'paths/modules/modules_instructor_{instructorId}.yaml'
+  '/modules/{id}/metrics':
+    $ref: 'paths/modules/modules_{id}_metrics.yaml'
+  '/modules/{moduleId}/actors/{actorId}/metrics':
+    $ref: 'paths/modules/modules_{moduleId}_actors_{actorId}_metrics.yaml'
   '/statements':
     $ref: 'paths/statements/statements.yaml'
   '/statements/{id}':
@@ -50,6 +59,12 @@ paths:
     $ref: 'paths/statements/statements_module_{moduleId}.yaml'
   '/statements/verb/{verb}':
     $ref: 'paths/statements/statements_verb_{verb}.yaml'
+  '/recommendations/similar/{actorId}':
+    $ref: 'paths/recommendations/recommendations_similar_{actorId}.yaml'
+  '/recommendations/review/{actorId}':
+    $ref: 'paths/recommendations/recommendations_review_{actorId}.yaml'
+  '/recommendations/topic/{actorId}':
+    $ref: 'paths/recommendations/recommendations_topic_{actorId}.yaml'
 components:
   schemas:
     Actor:
@@ -66,3 +81,7 @@ components:
       $ref: 'components/schemas/ModuleHierarchy.yaml'
     LearningResource:
       $ref: 'components/schemas/LearningResource.yaml'
+    CourseMetrics:
+      $ref: 'components/schemas/CourseMetricStructure.yaml'
+    ModuleMetrics:
+      $ref: 'components/schemas/ModuleMetricStructure.yaml'

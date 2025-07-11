@@ -1,0 +1,32 @@
+get:
+  tags:
+    - Courses
+  summary: Get course metrics by actor 
+  parameters:
+    - name: courseId
+      in: path
+      description: "The id of the course."
+      example: 898be885-cbcf-40fb-a8a6-79f2a4849475
+      required: true
+      schema:
+        type: uuid
+    - name: actorId
+      in: path
+      description: "The id of the actor."
+      example: 04b13ded-643f-516b-bb4c-7fb4f7358dce
+      required: true
+      schema:
+        type: uuid
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CourseMetrics'
+    '404':
+      description: Course not found or has no modules
+      $ref: ../components/responses/NotFound.yaml
+    '500':
+      description: Unexpected server error
+      $ref: ../components/responses/ServerError.yaml

@@ -1,0 +1,22 @@
+type: object
+properties:
+  attempts:
+    $ref: './CourseMetric.yaml'
+  performance:
+    $ref: './CourseMetric.yaml'
+  masteryRaw:
+    $ref: './CourseMetric.yaml'
+  masteryEbbinghaus:
+    $ref: './CourseMetric.yaml'
+  completion:
+    $ref: './CourseMetric.yaml'
+  timeSpent:
+    $ref: './CourseMetric.yaml'
+  realVsExpectedTime:
+    $ref: './CourseMetric.yaml'
+  lastVisit:
+    $ref: './CourseMetric.yaml'
+  totalVisits:
+    $ref: './CourseMetric.yaml'
+  rating:
+    $ref: './CourseMetric.yaml'

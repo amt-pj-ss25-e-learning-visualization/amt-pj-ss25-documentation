@@ -1,0 +1,32 @@
+get:
+  tags:
+    - Modules
+  summary: Get module metrics by actor 
+  parameters:
+    - name: moduleId
+      in: path
+      description: "The id of the module."
+      example: 898be885-cbcf-40fb-a8a6-79f2a4849475
+      required: true
+      schema:
+        type: uuid
+    - name: actorId
+      in: path
+      description: "The id of the actor."
+      example: e7509e69-75e9-5aca-b911-95876b2fe505
+      required: true
+      schema:
+        type: uuid
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ModuleMetrics'
+    '400':
+      description: Module id not provided
+      $ref: ../components/responses/BadRequest.yaml
+    '500':
+      description: Unexpected server error
+      $ref: ../components/responses/ServerError.yaml

@@ -1,0 +1,28 @@
+type: object
+properties:
+  data:
+    type: array
+    items:
+      type: object
+      properties:
+        actor:
+          type: string
+          format: uuid
+          description: Unique identifier for the actor.
+          example: "e7509e69-75e9-5aca-b911-95876b2fe505"
+        value:
+          type: number
+          description: Metric value for the actor.
+          example: 1.5
+  mean:
+    type: number
+    description: Mean value of the metric across all actors.
+    example: 1.5
+  min:
+    type: number
+    description: Minimum value of the metric across all actors.
+    example: 1
+  max:
+    type: number
+    description: Maximum value of the metric across all actors.
+    example: 2
