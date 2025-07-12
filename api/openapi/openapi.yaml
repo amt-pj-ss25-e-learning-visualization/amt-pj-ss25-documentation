@@ -1,17 +1,66 @@
 openapi: 3.1.0
 info:
-  title: Dashboard-DB API
+  title: Learning Record Store API
   license:
-    name: 'TODO: License name'
-    url: http://www.apache.org/licenses/LICENSE-2.0.html
-  x-logo:
-    url: 'https://redocly.github.io/openapi-template/logo.png'
-    altText: OpenAPI example logo
+    name: 'MIT License (MIT)'
+    url: https://mit-license.org/
   description: >
-    TODO: Dashboard-DB API description. Future reminder, that this supports **Markdown** formatting.
+    The **Learning Record Store API** provides endpoints for retrieving learning records, including xAPI statements, courses, modules, actors, and recommendations for actors.<br><br>
+    This API is part of the AMT project _"[Modeling and Visualizing Learning Progress in E-learning](https://github.com/amt-pj-ss25-e-learning-visualization/amt-pj-ss25-dashboard)"_ during the **SS25** at **TU Berlin**.<br><br>
 tags:
   - name: Actors
-    description: "TODO: Actors-API description"
+    description: "Find and filter actors (students or instructors), including their details, such as `id`, `mail`, `name` and `role`."
+  - name: Courses
+    description: >
+      Find and filter courses, including their details, such as `id`, `title`, `description`, `subject` and `language`.<br><br>
+      Additionally, course-level metrics can be retrieved, providing aggregated data across all modules and actors within the course.<br>
+      Each metric is provided both as raw data and as statistical summaries, including `mean`, `minimum`, `maximum` and `mean of sums`.
+      <table>
+        <thead>
+          <tr><th>Metric</th><th>Description</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>attempts</td><td>Attempts made by actors within a course.</td></tr>
+          <tr><td>performance</td><td>Scores achieved by actors.</td></tr>
+          <tr><td>masteryRaw</td><td>Self-evaluation scores provided by actors.</td></tr>
+          <tr><td>masteryEbbinghaus</td><td>Self-evaluation scores adjusted by forgetting curve.</td></tr>
+          <tr><td>completion</td><td>Number of course completions.</td></tr>
+          <tr><td>timeSpent</td><td>Time spent on course.</td></tr>
+          <tr><td>realVsExpectedTime</td><td>Ratio of actual completion time vs. expected time.</td></tr>
+          <tr><td>lastVisit</td><td>Time elapsed (in ms) since the last course interaction</td></tr>
+          <tr><td>totalVisits</td><td>Number of course visits.</td></tr>
+          <tr><td>rating</td><td>Course feedback rating from actors.</td></tr>
+        </tbody>
+      </table>
+  - name: Modules
+    description: >
+      Retrieve and filter course modules, including details such as `id`, `course_id`, `parent_id` (indicating a parent module),
+      `title` and the responsible actor identified by `instructor_id`. <br><br>
+      Additionally, module-level metrics can be retrieved, providing raw data of participating actors as well as statistical summaries for the entire module.<br>
+      <table>
+        <thead>
+          <tr><th>Metric</th><th>Description</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>attempts</td><td>Attempts made by actors within a module.</td></tr>
+          <tr><td>performance</td><td>Scores achieved by actors.</td></tr>
+          <tr><td>masteryRaw</td><td>Self-evaluation scores provided by actors.</td></tr>
+          <tr><td>masteryEbbinghaus</td><td>Self-evaluation scores adjusted by forgetting curve.</td></tr>
+          <tr><td>completion</td><td>Number of module completions.</td></tr>
+          <tr><td>timeSpent</td><td>Time spent on module.</td></tr>
+          <tr><td>realVsExpectedTime</td><td>Ratio of actual completion time vs. expected time.</td></tr>
+          <tr><td>lastVisit</td><td>Time elapsed (in ms) since the last module interaction</td></tr>
+          <tr><td>totalVisits</td><td>Number of module visits.</td></tr>
+          <tr><td>rating</td><td>Module feedback rating from actors.</td></tr>
+        </tbody>
+      </table>
+  - name: Statements
+    description: >
+      Retrieve and filter xAPI statements, including details such as `id`, the `actor_id`, `module_id`,
+      `verb`, `result` and `timestamp`.
+  - name: Recommendations
+    description: >
+      Retrieve recommendations for actors based on their learning records and interest.
 x-tagGroups:
   - name: General
     tags:
@@ -23,16 +72,21 @@ x-tagGroups:
 servers:
   - url: http://<host-adress>:<port>/
 paths:
+  # Actors Endpoints
   '/actors':
     $ref: 'paths/actors/actors.yaml'
   '/actors/{id}':
     $ref: 'paths/actors/actors_{id}.yaml'
   '/actors/role/{role}':
     $ref: 'paths/actors/actors_role_{role}.yaml'
+
+  # Courses Endpoints
   '/courses':
     $ref: 'paths/courses/courses.yaml'
   '/courses/{id}':
     $ref: 'paths/courses/courses_{id}.yaml'
+  
+  # Modules Endpoints
   '/modules/{id}/metrics/aggregated':
     $ref: 'paths/courses/courses_{id}_metrics_aggregated.yaml'
   '/modules/{moduleId}/actors/{actorId}/metrics/aggregated':
@@ -49,6 +103,8 @@ paths:
     $ref: 'paths/modules/modules_{id}_metrics.yaml'
   '/modules/{moduleId}/actors/{actorId}/metrics':
     $ref: 'paths/modules/modules_{moduleId}_actors_{actorId}_metrics.yaml'
+
+  # Statements Endpoints
   '/statements':
     $ref: 'paths/statements/statements.yaml'
   '/statements/{id}':
@@ -59,6 +115,8 @@ paths:
     $ref: 'paths/statements/statements_module_{moduleId}.yaml'
   '/statements/verb/{verb}':
     $ref: 'paths/statements/statements_verb_{verb}.yaml'
+  
+  # Recommendations Endpoints
   '/recommendations/similar/{actorId}':
     $ref: 'paths/recommendations/recommendations_similar_{actorId}.yaml'
   '/recommendations/review/{actorId}':

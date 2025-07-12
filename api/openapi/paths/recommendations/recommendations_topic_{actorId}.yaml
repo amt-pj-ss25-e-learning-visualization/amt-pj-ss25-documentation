@@ -2,6 +2,9 @@ get:
   tags:
     - Recommendations
   summary: Get recommendations by topic interest
+  description: |
+    This endpoint retrieves a list of modules that are recommended for an actor based on their topic interests.
+    Recommendations are based on the subject of previously completed modules.
   parameters:
     - name: actorId
       in: path
