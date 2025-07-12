@@ -2,6 +2,8 @@ get:
   tags:
     - Modules
   summary: Get all module metrics
+  description: |
+    This endpoint retrieves metrics for a specific module, including individual data for each participating actor.
   parameters:
     - name: id
       in: path

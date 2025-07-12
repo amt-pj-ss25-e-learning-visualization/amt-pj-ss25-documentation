@@ -1,7 +1,9 @@
 get:
   tags:
     - Modules
-  summary: Get module metrics by actor 
+  summary: Get module metrics by actor
+  description: |
+    This endpoint retrieves aggregated metrics for a specific module, limited to data from the specified actor only.
   parameters:
     - name: moduleId
       in: path

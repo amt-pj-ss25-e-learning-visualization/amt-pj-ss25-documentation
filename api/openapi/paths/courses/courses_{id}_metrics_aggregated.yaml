@@ -2,6 +2,8 @@ get:
   tags:
     - Courses
   summary: Get all course metrics
+  description: |
+    This endpoint retrieves aggregated metrics for a specific course, including individual data for each participating actor.
   parameters:
     - name: id
       in: path
